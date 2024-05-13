@@ -2,6 +2,10 @@
 import './App.css'
 import TopBar from "./components/topBar.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Projects from "./pages/projects.tsx";
+import Index from "./pages";
+import About from "./pages/about.tsx";
+import Contact from "./pages/contact.tsx";
 
 
 function App() {
@@ -9,11 +13,12 @@ function App() {
     return (
         <BrowserRouter>
             <TopBar/>
-            <Routes>
-                <Route path="/" element={<p>hello</p>}/>
-                <Route path="/projects" element={<p>clients</p>}/>
-                <Route path="/about" element={<p>about</p>}/>
-                <Route path="/contact" element={<p>contact</p>}/>
+            <Routes >
+                <Route path="/" element={<Index/>}/>
+                <Route path="/projects" element={<Projects/>}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/careers" element={<About/>}/>
+                <Route path="/contact" element={<Contact/>}/>
             </Routes>
         </BrowserRouter>
     )
