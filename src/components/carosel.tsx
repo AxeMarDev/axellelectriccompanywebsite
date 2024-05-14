@@ -2,24 +2,27 @@ import React, {useEffect, useState} from "react";
 
 
 
-
-const SlideCard = () =>{
+type propsSldieCard = {
+    slideState:[slide:number, setSlide:React.Dispatch<React.SetStateAction<number>>],
+    content:{title:string, description:string}[]
+}
+const SlideCard = ({slideState, content}:propsSldieCard) =>{
     return(
         <div className={" w-full h-full grid content-end "}>
-            <div className={"bg-white w-2/3 h-72 mb-16 p-6 rounded-lg"}>
-                <p>Serving the valley for over 30 years</p>
-                <p>placeholder description</p>
+            <div className={"bg-white w-2/3 h-auto mb-16 p-6 rounded-lg"}>
+                <p className={"text-3xl font-bold mb-5"}>{content[slideState[0]].title}</p>
+                <p>{content[slideState[0]].description}</p>
             </div>
-
         </div>
     )
 }
 
-type propsSlideController = { slideCount:number, slideState:[slide:number, setSlide:React.Dispatch<React.SetStateAction<number>>]}
+type propsSlideController = {
+    slideCount:number,
+    slideState:[slide:number, setSlide:React.Dispatch<React.SetStateAction<number>>]}
 const SlideController = ({slideCount, slideState}:propsSlideController ) =>{
 
     const [ mapArray, setMapArray ] = useState<number[]>([])
-
 
     useEffect(() => {
         let i = 0;
@@ -44,15 +47,18 @@ const SlideController = ({slideCount, slideState}:propsSlideController ) =>{
     )
 }
 
-type propsCarosel = { slideCount:number, slideState:[slide:number, setSlide:React.Dispatch<React.SetStateAction<number>>]}
+type propsCarosel = {
+    slideCount:number,
+    slideState:[slide:number, setSlide:React.Dispatch<React.SetStateAction<number>>],
+    content:{title:string, description:string}[]
+}
 
-export default function Carosel({slideCount, slideState}:propsCarosel ){
+export default function Carosel({slideCount, slideState, content}:propsCarosel ){
     return(
         <div className={"flex flex-row w-screen px-32 h-[70vh]"}>
-            <SlideCard/>
+            <SlideCard slideState={slideState} content={content}/>
             <SlideController slideCount={slideCount} slideState={slideState}/>
         </div>
     )
 }
 
-// 108700

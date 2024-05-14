@@ -19,13 +19,17 @@ export default function Index(){
    ]
     const imageCount = images.length
 
+    const content = [
+        { title:"Serving the valley for over 30 years", description: "placeholder description"},
+        { title:"Helping brownsville go to mars", description: "placeholder description"}
+    ]
+
     return(
         <div className={"mt-[7.5rem] h-[70vh]"} style={{
             backgroundImage:`url(${images[ slide % imageCount]})`,
             backgroundSize: "cover"
         }}>
-            <Carosel slideState={[slide, setSlide]} slideCount={imageCount}/>
-
+            <Carosel slideState={[slide, setSlide]} slideCount={imageCount} content={content}/>
         </div>
     )
 }
