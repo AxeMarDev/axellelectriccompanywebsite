@@ -37,7 +37,7 @@ export default function TopBar(){
                     <Link className={" flex flex-row justify-between"} to={"/"}>
                         <img className={"mr-10"} src={axellelectriclogotype} alt={"blue text axell logotype"}/>
                     </Link>
-                    <TopBarButton to={"/API"}> projects </TopBarButton>
+                    <TopBarButton to={"/projects"}> projects </TopBarButton>
                     <TopBarButton to={"/about"}> about </TopBarButton>
                     <TopBarButton to={"/careers"}> careers </TopBarButton>
                 </div>

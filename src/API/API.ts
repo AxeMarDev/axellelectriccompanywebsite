@@ -1,11 +1,11 @@
 
 export type tProject = {id:string, name:string, location:string, imageurl:string}
-export type tPeople = [tProject] | [];
+export type tProjects = [tProject] | [];
 
 
 const GET = async ( route:string, params:Record<string, string> ) =>{
 
-    let value : { resp : tPeople } = {resp: []}
+    let value : { resp : tProjects } = {resp: []}
 
     const queryParams = new URLSearchParams(params);
 
@@ -39,7 +39,7 @@ const GET = async ( route:string, params:Record<string, string> ) =>{
 
 const POST = async ( route:string, params:Record<string, string>, data:BodyInit ) =>{
 
-    let value : { resp : tPeople } = {resp: []}
+    let value : { resp : tProjects } = {resp: []}
 
     const queryParams = new URLSearchParams(params);
 
