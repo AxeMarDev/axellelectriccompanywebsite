@@ -17,9 +17,10 @@ function App() {
                 <Route path="/" element={<Index/>}/>
                 <Route path="/projects" element={<Projects/>}/>
                 <Route path="/about" element={<About/>}/>
-                <Route path="/careers" element={<About/>}/>
+                {/*<Route path="/careers" element={<Careers/>}/>*/}
                 <Route path="/contact" element={<Contact/>}/>
             </Routes>
+
         </BrowserRouter>
     )
 }

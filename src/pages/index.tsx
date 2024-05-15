@@ -1,5 +1,6 @@
 import  {useEffect, useState} from "react";
 import Carosel from "../components/carosel.tsx";
+import Footer from "../components/footer.tsx";
 
 
 
@@ -25,11 +26,12 @@ export default function Index(){
     ]
 
     return(
-        <div className={"mt-[7.5rem] h-[70vh]"} style={{
+        <div className={"mt-[4rem] h-[70vh]"} style={{
             backgroundImage:`url(${images[ slide % imageCount]})`,
             backgroundSize: "cover"
         }}>
             <Carosel slideState={[slide, setSlide]} slideCount={imageCount} content={content}/>
+            <Footer/>
         </div>
     )
 }
