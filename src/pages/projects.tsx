@@ -1,3 +1,5 @@
+import {useEffect} from "react";
+import API from "../API/API.ts";
 
 
 type propsProjectCard = {url: string, title:string, location:string}
@@ -17,6 +19,17 @@ function ProjectCard({url, title,location}:propsProjectCard){
 }
 export default function Projects(){
 
+
+    useEffect(()=>{
+        API.getProjects().then((resp)=>{
+            console.log(resp.resp);
+        })
+    },[])
+
+    const addProject = () =>{
+        API.addProjects({id:"",name:"testing", location:"testing", imageurl:"testing"}).then((resp)=>console.log(resp))
+    }
+
     const content = [
         {url: "https://www.gosandiego.com/wp-content/uploads/2015/01/Baked-Bear-1.jpg", title:"Baked Bear", location:"South Padre Island, TX"},
         {url: "https://s.hdnux.com/photos/01/36/00/71/24645201/3/rawImage.jpg", title:"WSS store" , location:"Mission, TX"},
@@ -25,16 +38,18 @@ export default function Projects(){
         {url: "https://s.hdnux.com/photos/46/66/01/10182747/6/rawImage.jpg", title:"DDs Discount", location:"Mission, TX"},
         {url: "https://eatz-associates.com/wp-content/uploads/2020/03/CSC-Chesterfield-MI-Store-Front-scaled.jpg", title:"Cold Stone", location:"Brownsville, TX"},
         {url: "https://www.utrgv.edu/som/gme/programs/general-surgery-valley-baptist-medical-center/_files/images/locations/valley-baptist.jpg", title:"Valley Baptist Hospital", location:"Brownsville, TX"},
-
     ]
 
     return(
-        <div className={"pt-[4rem] px-32 flex h-full"}>
+        <div className={"pt-[4rem] px-32 flex h-full flex-col"}>
             <div className={"w-full h-full pt-4 pb-10"}>
                 <p className={"text-3xl font-bold text-gray-400"}>Projects</p>
                 <div className={"w-full h-full pt-4 grid grid-cols-3 gap-10"}>
                     {content.map((item)=> <ProjectCard title={item.title} url={item.url} location={item.location}/>)}
                 </div>
+            </div>
+            <div>
+                <button onClick={()=>addProject()}>add person</button>
             </div>
         </div>
     )
