@@ -2,7 +2,7 @@
 export type tProject = {id:string, name:string, location:string, imageurl:string}
 export type tProjects = [tProject] | [];
 
-
+export type tMessage = {id:string, email:string, name:string, location:string, message:string,read:false}
 const GET = async ( route:string, params:Record<string, string> ) =>{
 
     let value : { resp : tProjects } = {resp: []}
@@ -85,6 +85,12 @@ const   addProjects = async (param:tProject) =>{
 
 }
 
+const   addMessage = async (param:tMessage) =>{
+
+    return POST( "/messages",{}, JSON.stringify(param))
+
+}
+
 
 export {getProjects}
 
@@ -96,5 +102,7 @@ export default class API{
     static addProjects( param:tProject){
         return addProjects(param)
     }
-
+    static addMessage(param:tMessage){
+        return addMessage(param)
+    }
 }

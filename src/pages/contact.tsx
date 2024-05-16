@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import API, {tMessage} from "../API/API.ts";
 
 type formType = {name:string, value:string, type:string, id:string}
 
@@ -38,6 +39,23 @@ function Form( {data}:propsForm ){
         setFormData(data)
     }, []);
 
+    const handleSumbit = () =>{
+
+        const params:tMessage = { id:"" ,
+            email: formData[1].value ,
+            name:formData[0].value,
+            location:formData[2].value,
+            message: formData[3].value ,
+            read:false
+        }
+
+        API.addMessage(params).then((resp)=>{
+            setFormData(data)
+            console.log(resp.resp)
+        })
+
+    }
+
     return(
         <div className={"mt-[7.5rem] flex flex-col w-full   space-y-2 "}>
             <p className={"flex justify-center font-bold text-3xl text-gray-800 mb-10 "}> Send us a message</p>
@@ -47,7 +65,7 @@ function Form( {data}:propsForm ){
                 </div>
             )}
             <div className={"flex  justify-center  w-full  pt-10 "}>
-                <button className={"bg-blue-500 w-1/3 p-5 rounded text-white font-bold hover:bg-blue-400"}>Submit</button>
+                <button className={"bg-blue-500 w-1/3 p-5 rounded text-white font-bold hover:bg-blue-400"} onClick={()=>handleSumbit()}>Submit</button>
             </div>
         </div>
     )
@@ -56,15 +74,14 @@ function Form( {data}:propsForm ){
 export default function Contact(){
 
     const data:formType[] = [
-        {name:"first name", value:"", type:"text", id:"1"},
+        {name:"name", value:"", type:"text", id:"1"},
         {name:"email", value:"", type:"text", id:"1" },
-        {name:"phone number", value:"", type:"text", id:"1" },
+        {name:"location", value:"", type:"text", id:"1" },
         {name:"message", value:"", type:"text", id:"1" },
     ]
 
     return(
         <div className={"mt-[7.5rem] flex h-full"}>
-
             <Form data={data}/>
         </div>
     )

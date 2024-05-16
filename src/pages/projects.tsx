@@ -27,10 +27,6 @@ export default function Projects(){
         })
     },[])
 
-    const addProject = () =>{
-        API.addProjects({id:"",name:"testing", location:"testing", imageurl:"testing"}).then((resp)=>console.log(resp))
-    }
-
     return(
         <div className={"pt-[4rem] px-32 flex h-full flex-col"}>
             <div className={"w-full h-full pt-4 pb-10"}>
@@ -38,9 +34,6 @@ export default function Projects(){
                 <div className={"w-full h-full pt-4 grid grid-cols-3 gap-10"}>
                     {content.map((item)=> <ProjectCard title={item.name} url={item.imageurl} location={item.location}/>)}
                 </div>
-            </div>
-            <div>
-                <button onClick={()=>addProject()}>add person</button>
             </div>
         </div>
     )
